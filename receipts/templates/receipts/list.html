@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div>
+                    <a style="text-decoration: none;" href="{% url 'home' %}">Receipts Home</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <h1>My Receipts</h1>
+            <p>
+                <a></a>
+            </p>
+            <p>
+                <a></a>
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vendor</th>
+                        <th>Total</th>
+                        <th>Tax</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Account</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for receipt in receipts %}
+                    <tr>
+                        <td>{{ receipt.vendor }}</td>
+                        <td>{{ receipt.total }}</td>
+                        <td>{{ receipt.tax }}</td>
+                        <td>{{ receipt.date|date:"m/d/y" }}</td>
+                        <td>{{ receipt.category.name }}</td>
+                        <td>{{ receipt.account.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    </body>
+</html>
