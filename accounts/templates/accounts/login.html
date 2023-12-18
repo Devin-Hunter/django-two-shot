@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div>
+                    <a style="text-decoration: none;" href="{% url 'home' %}">Receipts Home</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div>
+                <h1>Login</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button>Login</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
