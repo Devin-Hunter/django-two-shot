@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <h1>Hello, {{ user.username }} </h1>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'home' %}">Receipts Home</a>
+                    </li>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'create_receipt' %}">Create New Receipt</a>
+                    </li>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {% if user.is_authenticated %}
+            <h1>Accounts</h1>
+            <p>
+                <a></a>
+            </p>
+            <p>
+                <a></a>
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>Number of Receipts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in accounts %}
+                    <tr>
+                        <td>{{ item.accounts.name }}</td>
+                        <td>{{ item.accounts.number }}</td>
+                        <td>{{ item.accounts.objects.all|length }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </main>
+    </body>
+</html>
