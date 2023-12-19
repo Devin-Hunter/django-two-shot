@@ -6,19 +6,20 @@
     <body>
         <header>
             <nav>
-                <div>
-                    <a style="text-decoration: none;" href="{% url 'signup' %}">Sign Up &nbsp;&nbsp;</a>
-                    <a style="text-decoration: none;" href="{% url 'login' %}">Login</a>
-                </div>
+                <ul>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'home' %}">Receipts Home</a>
+                    </li>
+                </ul>
             </nav>
         </header>
         <main>
             <div>
-                <h1>Login</h1>
+                <h1>Create Receipt</h1>
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button>Login</button>
+                    <button>Create</button>
                 </form>
             </div>
         </main>

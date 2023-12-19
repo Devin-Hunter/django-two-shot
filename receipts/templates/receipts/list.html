@@ -6,18 +6,31 @@
     <body>
         <header>
             <nav>
-                <div>
-                    <a style="text-decoration: none;" href="{% url 'home' %}">Receipts Home &nbsp;&nbsp;</a>
+                <ul>
                     {% if user.is_authenticated %}
-                        Hello, {{ user.username }} &nbsp;&nbsp;
+                    <h1>Hello, {{ user.username }} </h1>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'home' %}">Receipts Home</a>
+                    </li>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'create_receipt' %}">Create New Receipt</a>
+                    </li>
+                    <li>
                         <a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a>
+                    </li>
                     {% else %}
-                        <a style="text-decoration: none;" href="{% url 'login' %}">Login &nbsp;&nbsp;</a>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    <li>
+                        <a style="text-decoration: none;" href="{% url 'login' %}">Login</a>
+                    </li>
                     {% endif %}
-                </div>
+                </ul>
             </nav>
         </header>
         <main>
+            {% if user.is_authenticated %}
             <h1>My Receipts</h1>
             <p>
                 <a></a>
@@ -42,13 +55,14 @@
                         <td>{{ receipt.vendor }}</td>
                         <td>{{ receipt.total }}</td>
                         <td>{{ receipt.tax }}</td>
-                        <td>{{ receipt.date|date:"m/d/y" }}</td>
+                        <td>{{ receipt.date|date:"n/j/y" }}</td>
                         <td>{{ receipt.category.name }}</td>
                         <td>{{ receipt.account.name }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            {% endif %}
         </main>
     </body>
 </html>
